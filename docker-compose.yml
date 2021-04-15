@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+   cuz360-api:
+     image: nginx:1.15.12-alpine
+     container_name: cuz360-api
+     restart: unless-stopped
+     ports:
+       - "80:80"
+       - "443:443"
+     volumes:
+       - ./conf:/etc/nginx/conf.d
+     logging:
+       driver: "json-file"
+       options:
+         max-size: "10m"
+         max-file: "3"
